@@ -1,4 +1,4 @@
-package org.as.account.dao.vo;
+package org.as.account.entity;
 
 public class AccountVO {
     public String userID;

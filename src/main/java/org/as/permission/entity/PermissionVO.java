@@ -1,4 +1,4 @@
-package org.as.permission.dao.vo;
+package org.as.permission.entity;
 
 public class PermissionVO {
 }
