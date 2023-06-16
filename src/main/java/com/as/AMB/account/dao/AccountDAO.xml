@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.as.AMB.account.dao.AccountDAO">
+
+    <insert id="addAccount">
+        INSERT INTO TB_ACCOUNT (USER_ID, USER_NAME, PWD, PHONE, EMAIL, ROLE_ID, IND_STATUS ) VALUE
+        (#{userId}, #{userName}, #{pwd}, #{phone}, #{email}, #{roleId}, #{indStatus})
+    </insert>
+
+    <delete id="deleteAccount">
+        DELETE FROM TB_ACCOUNT
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!=''">
+                AND USER_ID=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND USER_NAME=#{userName}
+            </if>
+            <if test="pwd!=null and pwd!=''">
+                AND PWD=#{pwd}
+            </if>
+            <if test="phone!=null and phone!=''">
+                AND PHONE=#{phone}
+            </if>
+            <if test="email!=null and email!=''">
+                AND EMAIL=#{email}
+            </if>
+            <if test="roleId!=null and roleId!=''">
+                AND ROLE_ID=#{roleId}
+            </if>
+            <if test="indStatus!=null and indStatus!=''">
+                AND IND_STATUS=#{indStatus}
+            </if>
+        </trim>
+    </delete>
+
+    <update id="updateAccount">
+        UPDATE TB_ACCOUNT
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null and userName!=''">
+                USER_NAME=#{userName},
+            </if>
+            <if test="userName!=null and userName!=''">
+                USER_NAME=#{userName},
+            </if>
+            <if test="pwd!=null and pwd!=''">
+                PWD=#{pwd},
+            </if>
+            <if test="phone!=null and phone!=''">
+                PHONE=#{phone},
+            </if>
+            <if test="email!=null and email!=''">
+                EMAIL=#{email},
+            </if>
+            <if test="roleId!=null and roleId!=''">
+                ROLE_ID=#{roleId},
+            </if>
+            <if test="indStatus!=null and indStatus!=''">
+                IND_STATUS=#{indStatus},
+            </if>
+        </trim>
+        where USER_ID=#{userId}
+    </update>
+
+    <select id="select" resultType="com.as.AMB.account.entity.AccountVO">
+        SELECT * FROM TB_ACCOUNT
+        <trim prefix="where" prefixOverrides="and">
+            <if test="userId!=null and userId!=''">
+                AND USER_ID=#{userId}
+            </if>
+            <if test="userName!=null and userName!=''">
+                AND USER_NAME=#{userName}
+            </if>
+            <if test="pwd!=null and pwd!=''">
+                AND PWD=#{pwd}
+            </if>
+            <if test="phone!=null and phone!=''">
+                AND PHONE=#{phone}
+            </if>
+            <if test="email!=null and email!=''">
+                AND EMAIL=#{email}
+            </if>
+            <if test="roleId!=null and roleId!=''">
+                AND ROLE_ID=#{roleId}
+            </if>
+            <if test="indStatus!=null and indStatus!=''">
+                AND IND_STATUS=#{indStatus}
+            </if>
+        </trim>
+    </select>
+</mapper>

@@ -1,12 +1,19 @@
-package org.as.account.entity;
+package com.as.AMB.account.entity;
 
 public class AccountVO {
+    // user id
     public String userID;
+    //user name
     public String userName;
+    //user password
     public String pwd;
+    //user's phone number
     public String phone;
+    //user's email address
     public String email;
+    //role id the user belong
     public String roleId;
+    //status
     public String indStatus;
 
     public String getUserID() {

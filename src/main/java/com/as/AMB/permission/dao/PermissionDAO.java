@@ -1,4 +1,4 @@
-package org.as.permission.dao;
+package com.as.AMB.permission.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

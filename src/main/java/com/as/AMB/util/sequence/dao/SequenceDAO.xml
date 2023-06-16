@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.as.AMB.util.sequence.dao.SequenceDAO">
+    <insert id="insert">
+        INSERT INTO TB_SEQUENCE (SEQ_NAME, INIT_VALUE, MAX_VALUE, CURR_VALUE, STEP, IND_STATUS) VALUE
+        (#{seqName}, #{initValue}, #{maxValue}, #{currValue}, #{step}, #{indStatus})
+    </insert>
+
+    <select id="check" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM TB_SEQUENCE WHERE SEQ_NAME = #{seqName} AND CURR_VALUE &lt; MAX_VALUE
+    </select>
+
+    <update id="generateId">
+        <selectKey keyProperty="currValue" order="AFTER">
+            SELECT CURR_VALUE FROM TB_SEQUENCE WHERE SEQ_NAME = #{seqName}
+        </selectKey>
+        UPDATE TB_SEQUENCE SET CURR_VALUE=CURR_VALUE+STEP WHERE SEQ_NAME=#{seqName}
+    </update>
+</mapper>
