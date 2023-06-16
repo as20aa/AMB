@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: as
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/asdb
+
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      connection-test-query: SELECT 1 FROM DUAL

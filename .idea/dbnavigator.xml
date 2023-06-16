@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -13,7 +13,54 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a5c875c0-e7dc-42e8-bb11-220e95583c5c">
-      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
+      <console name="Connection" type="STANDARD" schema="asdb" session="Main"><![CDATA[--create tb_account
+DROP TABLE IF EXISTS TB_ACCOUNT;
+CREATE TABLE TB_ACCOUNT(
+USER_ID VARCHAR(10) COMMENT '用户ID',
+USER_NAME VARCHAR(50) COMMENT '用户名',
+PWD VARCHAR(50) COMMENT '密码',
+PHONE VARCHAR(11) COMMENT '手机号码',
+EMAIL VARCHAR(50) COMMENT '邮件',
+ROLE_ID VARCHAR(10) COMMENT '角色ID',
+IND_STATUS VARCHAR(1) COMMENT '状态',
+CONSTRAINT pk_userId PRIMARY KEY (USER_ID)
+);
+--create tb_sequence
+DROP TABLE IF EXISTS TB_SEQUENCE;
+CREATE TABLE TB_SEQUENCE(
+SEQ_NAME VARCHAR(50) COMMENT '序号名',
+INIT_VALUE VARCHAR(10) COMMENT '初始值',
+MAX_VALUE VARCHAR(10) COMMENT '最大值',
+CURR_VALUE VARCHAR(10) COMMENT '当前值',
+STEP VARCHAR(10) COMMENT '步长',
+IND_STATUS VARCHAR(1) COMMENT '状态',
+CONSTRAINT pk_seqName PRIMARY KEY (SEQ_NAME)
+);
+--create tb_role
+DROP TABLE IF EXISTS TB_ROLE;
+CREATE TABLE TB_ROLE(
+ROLE_ID VARCHAR(10) COMMENT '角色ID',
+ROLE_NAME VARCHAR(50) COMMENT '角色名',
+IND_STATUS VARCHAR(1) COMMENT '状态',
+CONSTRAINT pk_roleId PRIMARY KEY (ROLE_ID)
+);
+--create tb_permission
+DROP TABLE IF EXISTS TB_PERMISSION;
+CREATE TABLE TB_PERMISSION(
+ROLE_ID VARCHAR(10) COMMENT '角色ID',
+MENUS VARCHAR(1000) COMMENT '菜单ID集合',
+IND_STATUS VARCHAR(1) COMMENT '状态',
+CONSTRAINT pk_roleId PRIMARY KEY (ROLE_ID)
+);
+--create tb_menu
+DROP TABLE IF EXISTS TB_MENU;
+CREATE TABLE TB_MENU(
+MENU_ID VARCHAR(10) COMMENT '菜单ID',
+MENU_NAME VARCHAR(50) COMMENT '菜单名',
+PARENT_MENU_ID VARCHAR(10) COMMENT '父菜单ID',
+IND_STATUS VARCHAR(1) COMMENT '状态',
+CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
+);]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -21,6 +68,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
+  </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -35,13 +85,15 @@
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
-          <driver-source value="BUILTIN" />
+          <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
           <database value="mysql" />
+          <tns-folder value="" />
+          <tns-profile value="" />
           <type value="USER_PASSWORD" />
           <user value="as" />
           <deprecated-pwd value="MTIzNA==" />
@@ -509,5 +561,8 @@
         </visibility-settings>
       </environment>
     </general-settings>
+  </component>
+  <component name="DBNavigator.Project.StatementExecutionManager">
+    <execution-variables />
   </component>
 </project>
