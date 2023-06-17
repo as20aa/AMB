@@ -42,9 +42,6 @@
             <if test="userName!=null and userName!=''">
                 USER_NAME=#{userName},
             </if>
-            <if test="userName!=null and userName!=''">
-                USER_NAME=#{userName},
-            </if>
             <if test="pwd!=null and pwd!=''">
                 PWD=#{pwd},
             </if>

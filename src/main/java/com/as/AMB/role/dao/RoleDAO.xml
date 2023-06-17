@@ -3,5 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.as.AMB.role.dao.RoleDAO">
-
+    <resultMap id="roleVO" type="com.as.AMB.role.dao.RoleDAO"/>
+    <insert id="addRole">
+        INSERT INTO TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUE (#{roleId}, #{roleName}, #{indStatus})
+    </insert>
+    <update id="updateRole">
+        UPDATE TB_ROLE
+        <trim prefix="set" suffixOverrides=",">
+            <if test="roleName!=null and roleName!=''">
+                ROLE_NAME = #{roleName},
+            </if>
+            <if test="indStatus!=null and indStatus!=''">
+                IND_STATUS = #{indStatus},
+            </if>
+        </trim>
+        WHERE ROLE_ID = #{roleId}
+    </update>
+    <delete id="deleteRole">
+        DELETE FROM TB_ROLE WHERE ROLE_ID = #{roleId}
+    </delete>
+    <select id="select" resultType="com.as.AMB.role.entity.RoleVO">
+        SELECT * FROM TB_ROLE
+        <trim prefix="where" prefixOverrides="and">
+            <if test="roleId!=null and roleId!=''">
+                AND ROLE_ID = #{roleId}
+            </if>
+            <if test="roleName!=null and roleName!=''">
+                AND ROLE_NAME = #{roleName}
+            </if>
+            <if test="indStatus!=null and indStatus!=''">
+                AND IND_STATUS = #{indStatus}
+            </if>
+        </trim>
+    </select>
 </mapper>

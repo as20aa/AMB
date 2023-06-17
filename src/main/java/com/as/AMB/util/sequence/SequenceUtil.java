@@ -6,16 +6,14 @@ import com.as.AMB.util.sequence.entity.SequenceVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.naming.Context;
 
-
+@Component
 public class SequenceUtil {
-    private static Context INSTANCE;
 
     @Autowired
     private SequenceDAO sequenceDAO;
 
-    public static String generateId(String seqName){
+    public String generateId(String seqName){
         SequenceVO sequenceVO = new SequenceVO();
         sequenceVO.setSeqName(seqName);
         if(sequenceDAO.check(sequenceVO)!=1) {

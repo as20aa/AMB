@@ -4,6 +4,7 @@ import com.as.AMB.account.dao.AccountDAO;
 import com.as.AMB.account.entity.AccountVO;
 import com.as.AMB.util.CommonUtils;
 import com.as.AMB.util.Constants;
+import com.as.AMB.util.sequence.SequenceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,12 +15,14 @@ import java.util.List;
 public class AccountLogic {
     @Autowired
     private AccountDAO accountDAO;
+    @Autowired
+    private SequenceUtil sequenceUtil;
 
     @Transactional
     public void addAccount(AccountVO accountVO) throws Exception {
         // generate the user id
-        String userId = CommonUtils.getSequence(Constants.SEQ_NAME_USER_ID);
-        accountVO.setUserID(userId);
+        String userId = sequenceUtil.generateId(Constants.SEQ_NAME_USER_ID);
+        accountVO.setUserId(userId);
         //check role id
 
         int affectRows = accountDAO.addAccount(accountVO);

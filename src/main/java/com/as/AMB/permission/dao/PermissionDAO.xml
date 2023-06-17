@@ -4,4 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.as.AMB.permission.dao.PermissionDAO">
 
+    <insert id="addPermission"></insert>
+    <update id="updatePermission"></update>
+    <delete id="deletePermission"></delete>
+    <select id="selectPermission" resultType="com.as.AMB.permission.entity.PermissionVO"></select>
 </mapper>

@@ -2,7 +2,7 @@ package com.as.AMB.account.entity;
 
 public class AccountVO {
     // user id
-    public String userID;
+    public String userId;
     //user name
     public String userName;
     //user password
@@ -16,12 +16,12 @@ public class AccountVO {
     //status
     public String indStatus;
 
-    public String getUserID() {
-        return userID;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setUserId(String userID) {
+        this.userId = userID;
     }
 
     public String getUserName() {
@@ -75,7 +75,7 @@ public class AccountVO {
     @Override
     public String toString() {
         return "AccountVO{" +
-                "userID='" + userID + '\'' +
+                "userID='" + userId + '\'' +
                 ", userName='" + userName + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", phone='" + phone + '\'' +

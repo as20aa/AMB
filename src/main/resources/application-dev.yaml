@@ -3,9 +3,14 @@ spring:
     username: as
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/asdb
+    url: jdbc:mysql://localhost:3306/asdb?useUnicode=true&useSSL=false
 
     hikari:
       minimum-idle: 5
       maximum-pool-size: 15
       connection-test-query: SELECT 1 FROM DUAL
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
