@@ -1,9 +1,9 @@
 package com.as.AMB.role.entity;
 
 public class RoleVO {
-    public String roleId;
-    public String roleName;
-    public String indStatus;
+    private String roleId;
+    private String roleName;
+    private String indStatus;
 
     public String getRoleId() {
         return roleId;

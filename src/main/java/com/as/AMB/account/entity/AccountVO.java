@@ -2,19 +2,19 @@ package com.as.AMB.account.entity;
 
 public class AccountVO {
     // user id
-    public String userId;
+    private String userId;
     //user name
-    public String userName;
+    private String userName;
     //user password
-    public String pwd;
+    private String pwd;
     //user's phone number
-    public String phone;
+    private String phone;
     //user's email address
-    public String email;
+    private String email;
     //role id the user belong
-    public String roleId;
+    private String roleId;
     //status
-    public String indStatus;
+    private String indStatus;
 
     public String getUserId() {
         return userId;
