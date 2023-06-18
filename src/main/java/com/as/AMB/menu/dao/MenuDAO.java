@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface MenuDAO {
-    int insertMenu(@Param("menuVO") MenuVO menuVO);
+    int insertMenu(MenuVO menuVO);
     int deleteMenu(MenuVO menuVO);
     int updateMenu(MenuVO menuVO);
     List<MenuVO> selectMenu(MenuVO menuVO);

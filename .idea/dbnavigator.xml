@@ -67,7 +67,9 @@ INSERT INTO TB_ACCOUNT (USER_ID, USER_NAME, PWD, PHONE, EMAIL, ROLE_ID, IND_STAT
 INSERT INTO TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUE ('0000000000', 'root', '1');
 
 select * from TB_ACCOUNT;
-select * from TB_ROLE;]]></console>
+select * from TB_ROLE;
+select * from TB_SEQUENCE;
+SELECT * FROM TB_MENU;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

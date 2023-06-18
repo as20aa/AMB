@@ -2,34 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.AMB.menu.dao.MenuDAO">
     <insert id="insertMenu">
-        INSERT INTO TB_PERMISSION (ROLE_ID, MENUS, IND_STATUS) VALUE (#{roleId}, #{menus}, #{indStatus})
+        INSERT INTO TB_MENU (MENU_ID, MENU_NAME, PARENT_MENU_ID, IND_STATUS) VALUE (#{menuId}, #{menuName}, #{parentMenuId}, #{indStatus})
     </insert>
+
     <update id="updateMenu">
-        UPDATE TB_PERMISSION
+        UPDATE TB_MENU
         <trim prefix="set" suffixOverrides=",">
-            <if test="menus!=null and menus!=''">
-                MENUS=#{menus}
+            <if test="menuName!=null and menuName!=''">
+                MENU_NAME=#{menuName}
+            </if>
+            <if test="parentMenuId!=null and parentMenuId!=''">
+                PARENT_MENU_ID=#{parentMenuId}
             </if>
             <if test="indStatus!=null and indStatus!=''">
                 IND_STATUS=#{indStatus}
             </if>
         </trim>
-        WHERE ROLE_ID=#{roleId}
+        WHERE MENU_ID=#{menuId}
     </update>
+
     <delete id="deleteMenu">
-        DELETE FROM TB_PERMISSION WHERE ROLE_ID=#{roleId}
+        DELETE FROM TB_MENU WHERE MENU_ID=#{menuId}
     </delete>
+
     <select id="selectMenu" resultType="com.as.AMB.menu.entity.MenuVO">
-        SELECT * FROM TB_PERMISSION
+        SELECT * FROM TB_MENU
         <trim prefix="where" prefixOverrides="and">
-            <if test="roleId!=null and roleId!=''">
-                ROLE_ID=#{roleId}
+            <if test="menuId!=null and menuId!=''">
+                AND MENU_ID=#{menuId}
             </if>
-            <if test="menus!=null and menus!=''">
-                MENUS=#{menus}
+            <if test="menuName!=null and menuName!=''">
+                AND MENU_NAME=#{menuName}
+            </if>
+            <if test="parentMenuId!=null and parentMenuId!=''">
+                AND PARENT_MENU_ID=#{parentMenuId}
             </if>
             <if test="indStatus!=null and indStatus!=''">
-                IND_STATUS=#{indStatus}
+                AND IND_STATUS=#{indStatus}
             </if>
         </trim>
     </select>
