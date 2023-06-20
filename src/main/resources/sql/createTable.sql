@@ -46,3 +46,4 @@ PARENT_MENU_ID VARCHAR(10) COMMENT '父菜单ID',
 IND_STATUS VARCHAR(1) COMMENT '状态',
 CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
 )charset=utf8mb4;
+--create root user and role id

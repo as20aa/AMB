@@ -5,7 +5,7 @@
 <mapper namespace="com.as.AMB.account.dao.AccountDAO">
 
     <insert id="addAccount">
-        INSERT INTO TB_ACCOUNT (USER_ID, USER_NAME, PWD, PHONE, EMAIL, ROLE_ID, IND_STATUS ) VALUE
+        INSERT INTO TB_ACCOUNT (USER_ID, USER_NAME, PWD, PHONE, EMAIL, ROLE_ID, IND_STATUS ) VALUES
         (#{userId}, #{userName}, #{pwd}, #{phone}, #{email}, #{roleId}, #{indStatus})
     </insert>
 

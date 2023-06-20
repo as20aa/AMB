@@ -13,16 +13,23 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
+/***
+ * ListToStringTypeHandler
+ * @description the self-defined type handler to convert list of strings to string to store it in one column
+ * @author as
+ * @version 1
+ * @date 2023-06-19
+ */
 @MappedJdbcTypes(JdbcType.VARCHAR)
 @MappedTypes(List.class)
 public class ListToStringTypeHandler implements TypeHandler<List<String>> {
     @Override
     public void setParameter(PreparedStatement ps, int i, List<String> parameter, JdbcType jdbcType) throws SQLException {
-        StringBuffer stringBuffer = new StringBuffer();
-        for(int j=0; j<parameter.size(); j++){
-            if(j==parameter.size()-1){
+        StringBuilder stringBuffer = new StringBuilder();
+        for(int j=0; j<parameter.size();j++){
+            if(j==parameter.size()-1) {
                 stringBuffer.append(parameter.get(j));
-            }else{
+            } else {
                 stringBuffer.append(parameter.get(j)).append(",");
             }
         }
@@ -31,27 +38,27 @@ public class ListToStringTypeHandler implements TypeHandler<List<String>> {
 
     @Override
     public List<String> getResult(ResultSet rs, String columnName) throws SQLException {
-        String result = rs.getString(columnName);
-        if (StringUtils.isNotEmpty(result)) {
-            return Arrays.asList(result.split(","));
+        String resultString = rs.getString(columnName);
+        if (StringUtils.isNotEmpty(resultString)) {
+            return Arrays.asList(resultString.split(","));
         }
         return null;
     }
 
     @Override
     public List<String> getResult(ResultSet rs, int columnIndex) throws SQLException {
-        String result = rs.getString(columnIndex);
-        if(StringUtils.isNotEmpty(result)){
-            return Arrays.asList(result.split(","));
+        String resultString = rs.getString(columnIndex);
+        if (StringUtils.isNotEmpty(resultString)) {
+            return Arrays.asList(resultString.split(","));
         }
         return null;
     }
 
     @Override
     public List<String> getResult(CallableStatement cs, int columnIndex) throws SQLException {
-        String result = cs.getString(columnIndex);
-        if(StringUtils.isNotEmpty(result)) {
-            return Arrays.asList(result.split(","));
+        String resultString = cs.getString(columnIndex);
+        if (StringUtils.isNotEmpty(resultString)) {
+            return Arrays.asList(resultString.split(","));
         }
         return null;
     }

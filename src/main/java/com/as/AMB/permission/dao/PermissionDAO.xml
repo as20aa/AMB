@@ -9,7 +9,7 @@
         <result column="IND_STATUS" jdbcType="VARCHAR" property="indStatus"/>
     </resultMap>
     <insert id="addPermission">
-        INSERT INTO TB_PERMISSION (ROLE_ID, MENUS, IND_STATUS) VALUE (#{roleId}, #{menus, typeHandler=com.as.AMB.util.ListToStringTypeHandler}, #{indStatus})
+        INSERT INTO TB_PERMISSION (ROLE_ID, MENUS, IND_STATUS) VALUES (#{roleId}, #{menus, typeHandler=com.as.AMB.util.ListToStringTypeHandler}, #{indStatus})
     </insert>
     <update id="updatePermission">
         UPDATE TB_PERMISSION

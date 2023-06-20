@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.as.AMB.menu.dao.MenuDAO">
     <insert id="insertMenu">
-        INSERT INTO TB_MENU (MENU_ID, MENU_NAME, PARENT_MENU_ID, IND_STATUS) VALUE (#{menuId}, #{menuName}, #{parentMenuId}, #{indStatus})
+        INSERT INTO TB_MENU (MENU_ID, MENU_NAME, PARENT_MENU_ID, IND_STATUS) VALUES (#{menuId}, #{menuName}, #{parentMenuId}, #{indStatus})
     </insert>
 
     <update id="updateMenu">
         UPDATE TB_MENU
         <trim prefix="set" suffixOverrides=",">
             <if test="menuName!=null and menuName!=''">
-                MENU_NAME=#{menuName}
+                MENU_NAME=#{menuName},
             </if>
             <if test="parentMenuId!=null and parentMenuId!=''">
-                PARENT_MENU_ID=#{parentMenuId}
+                PARENT_MENU_ID=#{parentMenuId},
             </if>
             <if test="indStatus!=null and indStatus!=''">
-                IND_STATUS=#{indStatus}
+                IND_STATUS=#{indStatus},
             </if>
         </trim>
         WHERE MENU_ID=#{menuId}

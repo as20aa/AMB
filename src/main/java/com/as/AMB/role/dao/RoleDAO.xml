@@ -5,7 +5,7 @@
 <mapper namespace="com.as.AMB.role.dao.RoleDAO">
     <resultMap id="roleVO" type="com.as.AMB.role.dao.RoleDAO"/>
     <insert id="addRole">
-        INSERT INTO TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUE (#{roleId}, #{roleName}, #{indStatus})
+        INSERT INTO TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUES (#{roleId}, #{roleName}, #{indStatus})
     </insert>
     <update id="updateRole">
         UPDATE TB_ROLE
