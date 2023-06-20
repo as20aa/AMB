@@ -62,14 +62,7 @@ IND_STATUS VARCHAR(1) COMMENT '状态',
 CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
 );
 
---init a system root user and role
-INSERT INTO TB_ACCOUNT (USER_ID, USER_NAME, PWD, PHONE, EMAIL, ROLE_ID, IND_STATUS) VALUE ('0000000000', 'root', '1234', '', '', '0000000000', '1');
-INSERT INTO TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUE ('0000000000', 'root', '1');
-
-select * from TB_ACCOUNT;
-select * from TB_ROLE;
-select * from TB_SEQUENCE;
-SELECT * FROM TB_MENU;]]></console>
+select * from TB_PERMISSION;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -106,7 +99,7 @@ SELECT * FROM TB_MENU;]]></console>
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="5.7" />
+          <database-version value="8.0" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />

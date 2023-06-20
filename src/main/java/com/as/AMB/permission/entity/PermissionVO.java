@@ -4,6 +4,7 @@ import java.util.List;
 
 public class PermissionVO {
     private String roleId;
+
     private List<String> menus;
     private String indStatus;
 

@@ -3,15 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.as.AMB.permission.dao.PermissionDAO">
-
+    <resultMap id="PermissionMap" type="com.as.AMB.permission.entity.PermissionVO">
+        <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId"/>
+        <result column="MENUS" jdbcType="VARCHAR" property="menus" typeHandler="com.as.AMB.util.ListToStringTypeHandler"/>
+        <result column="IND_STATUS" jdbcType="VARCHAR" property="indStatus"/>
+    </resultMap>
     <insert id="addPermission">
-        INSERT INTO TB_PERMISSION (ROLE_ID, MENUS, IND_STATUS) VALUE (#{roleId}, #{menus}, #{indStatus})
+        INSERT INTO TB_PERMISSION (ROLE_ID, MENUS, IND_STATUS) VALUE (#{roleId}, #{menus, typeHandler=com.as.AMB.util.ListToStringTypeHandler}, #{indStatus})
     </insert>
     <update id="updatePermission">
         UPDATE TB_PERMISSION
         <trim prefix="set" suffixOverrides=",">
             <if test="menus!=null and menus!=''">
-                MENUS=#{menus}
+                MENUS=#{menus, typeHandler=com.as.AMB.util.ListToStringTypeHandler},
             </if>
             <if test="indStatus!=null and indStatus!=''">
                 IND_STATUS=#{indStatus}
@@ -22,19 +26,18 @@
     <delete id="deletePermission">
         DELETE FROM TB_PERMISSION WHERE ROLE_ID=#{roleId}
     </delete>
-    <select id="selectPermission" resultType="com.as.AMB.permission.entity.PermissionVO">
+    <select id="selectPermission" resultMap="PermissionMap">
         SELECT * FROM TB_PERMISSION
         <trim prefix="where" prefixOverrides="and">
             <if test="roleId!=null and roleId!=''">
-                ROLE_ID=#{roleId}
+                AND ROLE_ID=#{roleId}
             </if>
             <if test="menus!=null and menus!=''">
-                MENUS=#{menus}
+                AND MENUS=#{menus}
             </if>
             <if test="indStatus!=null and indStatus!=''">
-                IND_STATUS=#{indStatus}
+                AND IND_STATUS=#{indStatus}
             </if>
         </trim>
-        WHERE ROLE_ID=#{roleId}
     </select>
 </mapper>
