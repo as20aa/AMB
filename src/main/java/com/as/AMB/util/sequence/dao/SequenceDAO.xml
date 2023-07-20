@@ -11,6 +11,7 @@
 
     <select id="check" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM TB_SEQUENCE WHERE SEQ_NAME = #{seqName} AND CAST(CURR_VALUE AS INTEGER) &lt; CAST(MAX_VALUE AS INTEGER)
+        <!--SELECT COUNT(*) FROM TB_SEQUENCE WHERE SEQ_NAME = #{seqName} AND CAST(CURR_VALUE AS UNSIGNED) &lt; CAST(MAX_VALUE AS UNSIGNED)-->
     </select>
 
     <update id="generateId">
@@ -18,5 +19,6 @@
             SELECT CURR_VALUE FROM TB_SEQUENCE WHERE SEQ_NAME = #{seqName}
         </selectKey>
         UPDATE TB_SEQUENCE SET CURR_VALUE=CAST(CURR_VALUE AS INTEGER)+CAST(STEP AS INTEGER) WHERE SEQ_NAME=#{seqName}
+        <!--UPDATE TB_SEQUENCE SET CURR_VALUE=CAST(CURR_VALUE AS UNSIGNED)+CAST(STEP AS UNSIGNED) WHERE SEQ_NAME=#{seqName}-->
     </update>
 </mapper>

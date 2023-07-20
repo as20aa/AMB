@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="a5c875c0-e7dc-42e8-bb11-220e95583c5c">
-      <console name="Connection" type="STANDARD" schema="asdb" session="Pool"><![CDATA[--create tb_account
+      <console name="Connection" type="STANDARD" schema="asdb" session="Main"><![CDATA[--create tb_account
 DROP TABLE IF EXISTS TB_ACCOUNT;
 CREATE TABLE TB_ACCOUNT(
 USER_ID VARCHAR(10) COMMENT '用户ID',
@@ -62,60 +62,15 @@ IND_STATUS VARCHAR(1) COMMENT '状态',
 CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
 );
 
-select * from TB_PERMISSION;]]></console>
+select * from TB_PERMISSION;
+
+select * from TB_ACCOUNT;
+SELECT * FROM TB_ROLE;
+delete from TB_ROLE where role_id = '00000000'
+select * from TB_SEQUENCE;]]></console>
     </connection>
     <connection id="e1826349-0a7b-4ca2-8646-6bc14c9c6338">
-      <console name="Postgresql" type="STANDARD" schema="public" session="Main"><![CDATA[--create tb_account
-DROP TABLE IF EXISTS TB_ACCOUNT;
-CREATE TABLE TB_ACCOUNT(
-USER_ID VARCHAR(10),
-USER_NAME VARCHAR(50),
-PWD VARCHAR(50),
-PHONE VARCHAR(11),
-EMAIL VARCHAR(50),
-ROLE_ID VARCHAR(10),
-IND_STATUS VARCHAR(1),
-CONSTRAINT pk_userId PRIMARY KEY (USER_ID)
-);
---create tb_sequence
-DROP TABLE IF EXISTS TB_SEQUENCE;
-CREATE TABLE TB_SEQUENCE(
-SEQ_NAME VARCHAR(50),
-INIT_VALUE VARCHAR(10),
-MAX_VALUE VARCHAR(10),
-CURR_VALUE VARCHAR(10),
-STEP VARCHAR(10),
-IND_STATUS VARCHAR(1),
-CONSTRAINT pk_seqName PRIMARY KEY (SEQ_NAME)
-);
---create tb_role
-DROP TABLE IF EXISTS TB_ROLE;
-CREATE TABLE TB_ROLE(
-ROLE_ID VARCHAR(10),
-ROLE_NAME VARCHAR(50),
-IND_STATUS VARCHAR(1),
-CONSTRAINT pk_roleId PRIMARY KEY (ROLE_ID)
-);
---create tb_permission
-DROP TABLE IF EXISTS TB_PERMISSION;
-CREATE TABLE TB_PERMISSION(
-ROLE_ID VARCHAR(10),
-MENUS VARCHAR(1000),
-IND_STATUS VARCHAR(1),
-PRIMARY KEY (ROLE_ID)
-);
---create tb_menu
-DROP TABLE IF EXISTS TB_MENU;
-CREATE TABLE TB_MENU(
-MENU_ID VARCHAR(10),
-MENU_NAME VARCHAR(50),
-PARENT_MENU_ID VARCHAR(10),
-IND_STATUS VARCHAR(1),
-CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
-);
-
-SELECT * FROM TB_SEQUENCE;
-SELECT * FROM TB_ROLE;]]></console>
+      <console name="Postgresql" type="STANDARD" schema="asdb" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">

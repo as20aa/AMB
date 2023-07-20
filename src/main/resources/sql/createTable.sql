@@ -47,3 +47,4 @@ IND_STATUS VARCHAR(1) COMMENT '状态',
 CONSTRAINT pk_menuId PRIMARY KEY (MENU_ID)
 )charset=utf8mb4;
 --create root user and role id
+insert into TB_ROLE (ROLE_ID, ROLE_NAME, IND_STATUS) VALUES ('0000000000', 'root', '1');
